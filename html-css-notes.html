@@ -1,0 +1,792 @@
+<!--  
+ 
+  HTML VOCAB
+
+ html: hypertext-markup language, language that defines the structure for webpages
+ css: cascading style sheets, styling language used to define styling for webpages
+ javascript: language used to add functionality to webpages
+ index.html: often represents the homepage of a website
+ URL: uniform resource locator, the address of a given unique resource on the Web. there are relative urls and absolute urls
+ 
+ Relative URLS: specifies the target resource relative to the current resource
+ Absolute URL: specifies the location of a resource irrespective of the current resource.  It can start with a / to indicate the root of the website or a protocol to represent a resource on a different website.
+ 
+ DOM: The document object model is an API for valid HTML documents.  It models the heirarchy of HTML objects in a tree data structure that can be traversed and manipulated to provide functionality for webpage
+ 
+ attributes: provide additional information about our element, src and alt are attributes for img element 
+ 
+ HTML document: consists of a DOCTYPE declaration that specifies the version of HTML being used followed by a tree (hierarchy) of elements that define the structure and content of the document.
+ root element in an HTML document: the html element, which always includes a head and a body element. 
+    head element: contains information about the page such as its title
+    body element: includes the structure and content of the page.
+ 
+ class: attribute that implements the grouping of elements to provide similar styling or behaviour
+ id: attribute that implements a unique id for the the select element
+ 
+ validating HTML/CSS pages: identifies potential errors in code, validator.w3.org for 
+ HTML, jigsaw.w3.org/css-validator for css
+ 
+ viewport: the viewable area of the webpage
+ entities: special html characters denoted with prepended ampersand and end with a semicolon, ex of common html entitity is copyright symbol, nonbreaking space entity, html characters
+ 
+ hyperlink and link: often used interchangeably but hyperlink denotes element with link and link is actual url referenced
+ 
+ semantic HTML elements:  html that implements structure which provides meaning and description of data to search engines, screen readers, and other software
+
+ block-level elements: always start on new line and take up entire horizontal available space.
+ inline elements: don't start on new line and take up as much width as necassary.
+ width and height properties: are only respected by block elements, span and inline-elements do not listen to these properties, you can change display: inline-block, to have an inline element that respects width and height properties, 
+ by default, height of block level elements is zero and width 100% 
+
+ media queries: we can provide different styles for different devices depending on features such as screen size, orientation, etc.  By using media queries and relative measurement units we can build responsive web sites that adjust smoothly to various screen sizes. 
+
+ font stacks: contains multiple fonts as fallbacks in case of error with first font,
+ network throttling: simulating a slow connection,
+ caching: permanent storage browsers use to store assets for faster performance.  It’s essentially somewhere on the disk. The cache can always be cleared.
+
+
+
+ RESOURCES
+ unsplash.com: great site for free pictures,
+ pexels.com: great site for free pictures,
+ caniuse.com: shows whether html or css is supported by the different browsers,
+ necolas.github.io/normalize.css: defines styling sheet for common elements with purpose of them being rendered the same in every browser
+
+-->
+
+<!-- //*********** ******************************************************/
+
+  // RANDOM
+
+  //*********** *******************************************************/ -->
+<img src="" alt="" />
+<!-- elements that do not need a closing tag cannot have children elements -->
+
+
+<!-- //**************************************************************** */
+
+  // ELEMENTS
+
+//*********** *********************************************************/ -->
+<p></p>
+<em></em>
+<strong></strong>
+
+<h1></h1>
+<h6></h6>
+<!-- since heading sizes can always be modified, only use headings according to hierarchy of your pages, only use one h1, h2s for main sections, h3 for subsections and so on -->
+
+<!-- LINKS -->
+<a href=""></a>
+<!-- url can be relative:denotes path from current directory or absolute path:starts with / (root) or protocol,-->
+<a href="" download></a>
+<!-- download attribute downloads referenced file -->
+<a href="#section-css"></a>
+<!-- changes viewport to fragment identified in id attribute, # denotes to top of page -->
+<a href="https://google.com" target="_blank">Google</a>
+<!-- links to external page, target attribute with value _blank opens the link in new tab -->
+<a href="mailto:jdcortez@iu.edu">Email me</a>
+<!-- //opens default email client and inserts your email in to section -->
+
+<!-- IMAGES -->
+<img src="img/coffee.jpg" alt="alternative text to display on page, ie a coffee mug on a table">
+<style>
+  img{
+    width: 200px;
+    height:200px;
+    object-fit:cover;
+  }
+</style>
+<!-- object-fit: cover has different ways for image to fill surrounding box, cover proportionally stretches the image across container -->
+
+<!-- 
+  VIDEO AND AUDIO 
+-->
+<video controls autoplay loop src="videos/ocean.mp4">
+Your browser doesn't support videos.  This is message displayed if video doesn't load
+</video>
+<!-- boolean attributes like controls autoplay loop, when you apply the attribute it will automatically be set to true, don't need to set a true/false value -->
+<audio src=""></audio>
+<!-- audio element has to follow video element and has boolean attributes -->
+<style>
+  video{
+    width: 400px;
+  }
+  /* won't need a height, browser will automatically determine it on its aspect ratio */
+</style>
+
+<!-- 
+  LISTS 
+-->
+<ul><li>
+  <li>
+  </li>
+</li>
+</ul>
+<!-- unordered lists: where order doesn't matter -->
+<ol></ol>
+<!-- ordered lists, where order does matter, ie 123, abc -->
+<dl><dt>Title</dt><dl></dl></dl>
+<!-- detailed lists, to display metadata or to implement a glossary -->
+
+<!-- 
+  TABLES: used to only represent tabular data, there are better ways to store data than explicitly putting into table 
+-->
+<table>
+  <thead>
+    <tr>
+      <th colspan="2">Expenses</th>
+      <!-- this colspan attribute modfies default value of 1 to 2-->
+    </tr>
+    <tr>
+      <th>Category</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td>Marketing</td>
+      <td>$100</td>
+    </tr>
+    <tr>
+      <td>Accounting</td>
+      <td>$200</td>
+    </tr>
+  </tbody>
+  <tfoot><tr>
+    <th>Total</th>
+    <th>$300</th>
+  </tr></tfoot>
+</table>
+<!-- The <table> element should only be used to represent tabular data. A table can have
+  zero or more <tr> (table row) elements. Each <tr> element can have zero or more cells.
+  Cells can be data cells (<td>) or header cells (<th>). -->
+<!-- by adding the thead elements and tbody, our table will provide more data to search engines and tablets, called semantic HTML -->
+<style>
+  table, td, th{
+    border:1px solid grey;
+    border-collapse:collapse;
+    /* eliminates border between neighboring cells */
+    padding:5px;
+    /* makes the table bigger by adding padding in between text and cells */
+  }
+
+  tfoot{
+    text-align:left;
+    /* aligns text to left of container */
+  }
+  </style>
+  <!-- border: common attribute used -->
+
+  
+  <!-- 
+    CONTAINERS 
+  -->
+
+  <!-- generic containers -->
+  <div></div>
+  <!-- block-level element: starts on a new line and takes up the entire available horizontal space of container-->
+  <span></span>
+  <!-- in-line element: used for styling text -->
+
+<!-- Semantic containers -->
+<article></article>
+<!-- an independent, self-contained content, ex forum post, comments, reviews-->
+<figure><img src="" alt=""></figure>
+<!-- tells search engine img is a figure -->
+<mark></mark>
+<time></time>
+<section></section>
+<!-- sections are to group content -->
+<header></header>
+<!-- headers are used for introductory content whether it be for page or article  -->
+<footer></footer>
+<!-- footers used in same way as header -->
+<aside></aside>
+<!-- used for content that is not directly related to main content -->
+<nav></nav>
+<!-- navigation menus either in header or footer usually -->
+<main></main>
+<!-- there can only be one main -->
+
+<!-- just an example of common structure of web pages -->
+<html>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <main>
+      <section>
+        <h2>Testimonial</h2>
+        <article></article>
+        <article></article>
+      </section>
+      <section></section>
+      <section></section>
+    </main>
+    <aside></aside>
+    <footer>
+      <nav>
+      <ul></ul>
+    </nav>
+  </footer>
+  </body>
+</html>
+<!-- takeways: one main, 
+      sections are to group content,
+    header are used for introductory content whether it be for page or article,
+  footers are used in same way as header,
+aside is used for content that is not directly related to main content  -->
+
+
+<!-- //***************************************************************************** */
+
+                                            // CSS
+
+  //**************************************************************************** */ -->
+  <!-- 
+    RANDOM 
+  -->
+
+  <!-- You can edit styling dynamically inside dev tools to instantly see changes with live server -->
+  <!-- *: universal selector that selects all elements besides pseudo elements and selectors -->
+  
+
+  <!-- 3 WAYS TO PROVIDE CSS: embedded stylesheets (style tag in head ), external stylesheets, and inline styles  -->
+  <link rel="stylesheet" href="">
+  <!-- link tag for external stylesheets, rel attribute specifies what kind of resource we are linking to, href attribute is for absolute or relative url -->
+
+  <!-- NORMALIZING CSS: providing common stylesheet that renders your html elements the same in different browsers since some of their settings differ -->
+
+<!-- **************************************
+        Selectors
+********************************************-->
+
+<!-- each css rule contains a selector (select elements by their type, class, ID, and attributes (which aren't that common)) and one or more declarations( property and value) -->
+<!-- an image with border-radius half to width will have rounded edges -->
+<style>
+  img {
+    width: 100px;
+    border-radius: 50 px;
+  }
+  p.products{}
+  .products{}
+  #id{}
+  a[href^="https"]{}
+  </style>
+
+<!-- 
+  Relational Selectors: provide cleaner markup than many classes and ids but are more fragile, take more time to lookup
+-->
+<style>
+  #products p{
+    /* <!-- style will apply to any paragraphs inside products section --> */
+  }
+  #products > p{
+    /* style applies to only first children p elements of products section */
+  }
+  #products + p{
+    /* style applies to first sibling p element relative to products section */
+  }
+  #products ~ p{
+    /* style applies to  all sibling p elements relative to products section */
+  }
+  </style>
+
+<!-- 
+  Pseudoclass Selectors: classes supplied by browsers by default, used to style elements in a particular state
+-->
+<!-- start with a : colon -->
+<article>
+  <p class="first">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, deserunt?</p>
+  <p>Lorem ipsum dolor sit amet.</p>
+</article>
+<style>
+  article :first-child{
+    /* styling would apply to first child of article section */
+  }
+  article p:first-child{
+    /* styling would apply to first p child of article section */
+  }
+  article :first-of-type{
+    /* styling would apply to first of each element type child of article section */
+  }
+  ul li:nth-child(3n){
+    /* styling would apply to every 3rd child li element of ul parent element */
+  }
+  a :hover, :visited, :link, :focus{
+    /* pseudoclass selectors that are common for hyperlinks  */
+  }
+  </style>
+
+<!-- 
+  Pseudo-element Selectors: classes supplied by browsers by default, used to style part of an element.  the most common are first-letter, first-line, selection, before and after. 
+-->
+<!-- start with a :: double colon -->
+<style>
+  p::first-letter{
+    /* styling used to modify first letter of paragraph */
+  }
+  p::before{
+    /* styling implemented before this p element, on same level (siblings) */
+  }
+  </style>
+
+<!-- Selectors Specificity -->
+<!-- when more than one rule applies to an element, which has precedence? -->
+<!-- 
+  Selector specificities: determine weight of selector:
+  selectors are given more weight if they are more specific, unless !important keyword used because it has most weight, however try to avoid using if possible
+  first id selector, then class and attribute selectors, then element selectors
+-->
+<!-- ***********************       end selectors    ******************************* -->
+
+<!-- INHERITANCE -->
+<!-- some elements inherit styles from their parents -->
+<!-- if you don't wish to inherit style reset inherited property with value of initial keyword or if there is property that is not inherited property that you wish to inherit list the property and set value to inherit keyword -->
+
+<!-- COLORS + GRADIENTS --> 
+<!-- color formats include named colors, rgb, hsl, and hexadecimal -->
+<!-- rgb: red, green, blue combo, rgba: rgb + transparency value 
+  hex: contains digits 0-9, letters a-f, 6 characters long, ex #e6cd10
+  hsl: hue, saturation, lightness, hsla: hsl + transparency value
+-->
+<!-- gradients: implement beautiful transitions between colors, technically images -->
+<!-- there are many tools out there to create pretty cool gradients and then output you the css, mosh's preffereed tool is css gradient.io -->
+<style> .box{background: linear-gradient(blue, yellow);
+  background:radial-gradient(white,yellow);} </style>
+
+<!-- 
+  BORDERS 
+-->
+<style>
+  .box{
+    width:200px; height: 200px; background: blue;
+    border: 10px solid royalblue;
+    border-radius: 100px;
+    /* this is shorthand prop, but you can also use longhand props border-top,left,right,bottom, border-width, border-style */
+  }
+  </style>
+  <!-- the values of border are: thickness, style, color -->
+  <!-- an image with border-radius half to width will be circle -->
+  
+  <!-- SHADOWS -->
+  <!-- use box-shadow property to apply shadows to elements, or text-shadow to apply shadows to text -->
+  
+  
+<!-- ***********************************************************************
+        LAYOUT
+****************************************************************************-->
+
+  <!-- Box model: When rendering an HTML document, the browser puts each element inside a box. The box contains four areas: the content area, the padding area, the border area and the margin area.  We use use margins to add space between elements and padding to add space in between border and content.
+  margin collapsing: whenever top and bottom margins are combined into a single margin.  The size of the margin is equal to the largest of the two margins. 
+  -->
+  <!-- overflow: happens when fixed size container cannot fit the entire content
+       use overflow property to deal with overflow behavior, shorthand for overflow-x: and overflow-y properties 
+  -->
+
+  <!-- SIZING -->
+    <!-- by default, height and width properties are applied to content box and do not include padding, border, margin areas -->
+    <!-- box-sizing property can change this default behavior -->
+    
+    <!-- width and height properties are only respected by block elements, span and inline-elements do not listen to these properties, you can change display: inline-block, to have an inline element that respects width and height properties -->
+    <!-- by default, height of block level elements is zero and width 100% -->
+  
+  <!-- MEASUREMENT UNITS, -->
+    <!-- absolute: px -->
+    <!-- relative: 
+          %: relative to size of container,
+          vw,vh: relative to the viewport,
+          em,rem: relative to the font size of the current element for em and relative to the font size of the current root element for rem, if there isn't font size for element then it inherits from parent or html element if no parents have font size
+    -->
+    <!-- With relative units, layouts can be more scalable and responsive.  There are still some use cases for px. -->
+  
+  <!-- POSITIONING -->
+    <!-- z-index: axis that controls depth, positive number bring element closer to you, negative number moves it further away -->
+    <!-- by default, all elements position property value is set to static -->
+  <style>
+    .box-container{
+      position: relative;
+    }
+    .box-relative{
+      position: relative; left:4rem; bottom:4vh;
+      z-index: 1;
+    }
+    .box-absolute{
+      position: absolute;
+      right:0;
+      bottom:0;
+    }
+    .box-fixed{ position:fixed; top:0;}
+    </style>
+    <!-- relative: positions element relative to its normal position, then set left, right, top, bottom property to add space -->
+    
+    <!-- absolute: positions element relative to its container, 
+    the container has to have position set to relative, then you can position element absolute and set top, right, left, bottom property to set position in container,
+    also removes this element from normal flow of page -->
+      
+    <!-- fixed: positions element relative to viewport,
+    set the position for element to fixed, then set top, left, bottom, right
+    property for positioning -->
+  
+  <!-- FLOATING ELEMENTS -->
+    <!-- should not use to build layouts, but if you are maintining old websites we may come into contact w floating elements for layouts -->
+    <!-- by default, parent elements don't see floated child elements -->
+    <!-- set float property to whatever side you want to push element to, rest of page will flow around this element and treat floated element as inline, 
+    set clear property for an element to treat the floated element as a block element-->
+    <!-- float collapse happens when the parent collapses bc it does not have enough content to contain floated element -->
+    <!-- you can clear the float by introducing a generic clearfix class below -->
+    <style>.clearfix::after{content:'';display:block;clear:both;}</style>
+
+  <!-- FLEXBOX, flexible box layout -->
+    <!-- used for laying out elements in one direction, row or column -->
+    <!-- set parent container to flex, flex-direction to row or column -->
+    <!-- two axis: main and cross -->
+    <!-- justify-content: property for aligning along the main axis -->
+    <!-- align-items: property for aligning along the cross axis -->
+    <!-- align-content: property for when there are multiple lines -->
+    
+    <!-- SIZING ITEMS -->
+    <!-- flex-basis: the initial size of a flex item, applies to width if flex-direction is row or height if flex-direction is to column
+      flex-grow: the growth factor, ie takes up aditional space if there is any
+      flex-shrink: the shrink factor, ie when there isn't enough room 
+      flex: shorthand for the abov sizing items-->
+    
+  <!-- GRID -->
+    <!-- used to display content in both rows and columns  -->
+    <!-- popular use is photo galleries, or major page areas -->
+    <!-- set container to display: grid, and grid-template-rows and grid-template-columns properties, grid template is shorthand property for the two-->
+    <!-- justify-items: aligning items along the horizontal axis -->
+    <!-- justify-content: aligns entire grid along the horizontal axis of container -->
+    <!-- align-items: aligning items along the vertical axis -->
+    <!-- align-content: aligns entire grid along the vertical axis of container -->
+
+  
+  <!-- HIDING ELEMENTS -->
+    <!-- display:none: property hides element and removes from DOM
+         visibility:hidden: property that hides element but it is still on DOM
+     -->
+  
+  <!-- MEDIA QUERIES -->
+    <!-- implement responsive design -->
+    <!--start desktop first or mobile first, then adjust the layouts as you go  -->
+    <!-- easier to go mobile first approach, then adjust for bigger screens as you go -->
+    @ media typeOfDevice and (condition){ styles to apply if condition is true}
+
+
+<!-- **********************************************************************************
+        Typography
+*************************************************************************************-->
+<!-- 
+  FONTS 
+-->
+<!-- 3 font families: 
+  serif: more professional, ex georgia, times new roman 
+  sans-serif: more playful, ex avenir, arial, futura, helvetica, roboto
+  monospace: all widths of characters are the same, ex consolas, courier, ubuntu  -->
+  
+  <!-- implement font stack style in body so all elements can inherit the font -->
+  <!-- Web safe fonts are fonts most browsers are guaranteed to be able to implement but outdated -->
+  <!-- font files come in different formats, ex TTF, OTF, EOT, 
+    WOFF, WOFF 2.0: compressed versions, most browsers provide support for them -->
+    
+    <!-- Flash of Unstyled Text (FOUT): may occur if it takes awhile to load font resources.  Backup font loads first, then once the resources load then the font will change. font-display property can provide you options to deal with this problem, mosh's prefferred value is font-display: optional -->
+    
+    <!-- To embed a custom font, we should first register it using the @font-face rule. -->
+    
+    <!-- FONT SERVICES -->
+    <!-- automatically add @font-face rule for you -->
+    <!-- google web fonts: fonts.google.com
+      adobe fonts: fonts.adobe.com
+      fonts.com
+      fontdeck.com -->
+      <!-- how to use google webfonts: find the font you like, copy the link tag provided on website and paste into html head tag, include our fonts in font stack in css  -->
+      
+      <!-- system font stack: we can tell browser to use default system font stack on user's computer, different than web safe fonts bc they are more up to date
+        benefits: can boost performance, no FOUT, native look, overall better experience
+        disadvantages: default fonts vary-->
+        <!-- how to implement: font-family: -apple-system (for apple computers) -->
+        
+        <!-- SIZING FONTS -->
+        <!-- font-size: -->
+        <!-- do not use px bc pixels are not consistent among devices, retina display  -->
+        <!-- use relative units like rem -->
+        
+        <!-- VERTICAL SPACING -->
+        <!-- margin: use margin to keep elements that are related closer to each other-->
+        <!-- line-height: good benchmark is 1.5, no units, to multiply font-size by 1.5  -->
+        
+        <!-- HORIZONTAL SPACING -->
+        <!-- letter-spacing: controls space between letters of text, don't use rem values use px 
+          word-spacing: controls space between words
+          ***ideal line length should be between 50-70 characters so you can use this trick to achieve styling, p { width: 50ch}, sets width to 50 zeros
+        -->
+        
+        <!-- FORMATTING TEXT -->
+        <!-- text-align, text-indent, text-decoration, text-transform, white-space, column-*, direction -->
+        <!-- text-align: controls horizontal alignment of text, don't use justify -->
+        <!-- text-indent: adds indentation on first line of text -->
+        <!-- text-decoration: underline or line through -->
+        <!-- text-transform: transforms text to capitalize, lowercase, uppercase -->
+        <!-- white-space: nowrap, allows you to make paragraph only one line of text -->
+        <!-- column-count, column-gap, column-rule: useful for multicolumn text -->
+        <!-- direction: used for right to left languages -->
+
+<!-- **********************************************************************************
+        IMAGES
+*************************************************************************************-->
+
+<!-- TYPES AND FORMATS -->
+<!-- 2 formats of images: 
+  raster: made up of pixels, come from cameras/scanners, JPG, PNG, GIF, etc, can be blurry if picture is too small and scaled up, takes long time to load if big size
+  
+  vector: defined by mathematical vectors like lines and curves, creates by software, SVG (scalable vector graphics) format, look sharp at any size, much smaller than raster images, be sure to use for logos, graphics, icons, and simple backgrounds!
+-->
+<!-- 2 types of images:
+  content: use descriptive value for alt for people who use screen readers
+  background:
+  background-image property: or background property: defines which image to use
+  background-repeat, background-position, background-size: useful properties to control background image
+  background-attachment:fixed: background stays fixed relative to viewport
+-->
+
+<!-- CSS SPRITES -->
+<!-- optimization technique that implements fewer http requests by combining images into one image so there is only one http request for all of the images, and splices the images in css to use individual image -->
+<!-- disadvantages: file size can get too larges, sprites are not flexible -->
+<!-- advantages: effective for icons and logos -->
+
+<!-- DATA URLS -->
+<!-- formerly known as data URIS -->
+<!-- another optimization technique to reduce HTTP requests by embedding image directly into stylesheet or HTML document -->
+<!-- cost: size of embedded code > size of the resource, increased       
+  complexity, slow on mobile
+  benefits: mosh personally doesn't think benefits outweigh costs-->
+  
+<!-- CLIPPING -->
+  <!-- clipping is pretty cool tool that clips shape from image, free tools online -->
+<!-- FILTERS -->
+  <!-- grayscale, blur, contrast, brightness, saturate : popular properties -->
+  
+<!-- SUPPORTING HIGH DENSITY SCREENS (for fixed image size) -->
+  <!-- physical resolution: based on actual number of pixels on device -->
+  <!-- logical resolution: how the screens behave in displaying pixels  -->
+  <!-- Device Pixel Ratio (DPR): ratio of physical/logical -->
+  <!-- High Density Screen: screen with DPR > 1 -->
+  
+  <!-- problem arises when a high density screen renders original size of raster image because the image is blurry  -->
+  <!-- to solve problem, we resize image to equal original image size x DPR -->
+  <!-- for example if we define CSS of image to be 400x400 px, for  2 DPR screen the image provided should be 800x800, for DPR of 3 the size would be 1200x1200  -->
+  <!-- implement the pics with srcset attribute of img element, and in css set img{width:400px} 
+    
+    srcset="
+    images/meal.jpg   1x,
+    images/meal@2x.jpg  2x
+    images/meal@3x.jpg  3x"  -->
+    
+    <!-- CSS always based on logical resolution  -->
+    <!-- don't overkill with support for every image, only implement if you have beautiful homepage or photo gallery with high resolution -->
+    
+<!-- RESOLUTION SWITCHING  -->
+  <!-- problem: the browser implements same image size based on DPR, and then needs to resize the image because it doesn't have fixed width and the devices resolution (sizes) vary, very costly operation   -->
+  <!-- solution: provide 3 different image sizes:small, medium, large and let browser pick best image for its resolution and DPR, sizes attribute displays the image with different relative widths based on screen size condition
+    srcset="
+    images/meal.jpg   400w,
+    images/meal@2x.jpg  800w
+    images/meal@3x.jpg  1200w"
+    sizes="
+    (max-width:500px) 100vw,
+    (max-width:700px) 50vw,
+    (max-width:*px) *vw,
+    "
+  -->
+    
+<!-- USING MODERN IMAGE FORMATS -->
+    <!-- WebP format is a format of raster images -->
+    <!-- how to convert: Photoshop (webpshop plug-in), sketch, online tools (cloudconver.tcom/jpg-to-webp), scripts -->
+    <!-- benefit is much smaller file size -->
+    <!-- cost is that it's not quite as sharp as jpg, but very close, not supported by IE -->
+<!-- ART DIRECTION -->
+    <!-- when you want to show a zoomed in or cropped version of image for certain screen sizes -->
+    <!-- use picture element -->
+    <picture><source media="(max-width:500px;)"" srcset="images/meal-cropped.jpg">
+      <source media="(min-width:501px;)"" srcset="images/meal.jpg">
+      <img src="images/meal.jpg" alt="a beautiful meal of salmon and curry"></picture>
+      
+<!-- FONT ICONS  -->
+  <!-- most popular are Font Awesome, Ionicons, Material Design Icons -->
+  <!-- I like fontawsome.com -->
+  <!-- need to add kit code in script tag in head of html document -->
+  <!-- wrap i element in a span element to style, or just change i element to span -->
+
+<!-- **********************************************************************************
+        FORMS
+*************************************************************************************-->
+  <form action=""></form>
+  <!-- action attribute: used for submitting form  -->
+  <input type="text">
+  <!-- input fields: also called form controls -->
+  <label for=""></label>
+  <!-- labels are inline elements, for attribute associates label with input field -->
+  <button type="reset"></button> 
+  <button type="submit"></button>
+  <!--reset attribute resets values for all fields, and submit submits the form  -->
+
+<!-- CSS FRAMEWORKS -->
+  <!-- popular frameworks include Bootstrap, Foundation, Semantic UI, UI Kit, Materialize, Milligram -->
+  <!-- I prefer Bootstrap, Mosh recommends milligram because it is a very lightweight framework and easy to use -->
+  <!-- short learning curve to css frameworks but save you a lot of time in long run -->
+
+<!-- TEXT FIELDS -->
+  <!-- be familiar with attributes: value, placeholder, readonly, disabled, maxlength, autofocus -->
+  <input type="text/number/password/date/email">
+  <!-- popular types for input field-->
+  <textarea name="." id="" cols="30" rows="10"></textarea>
+
+<!-- DATA LISTS, (suggestion lists) -->
+  <input type="text" list="countries" autocomplete="off">
+  <datalist id="countries">
+    <option data-value="">Australia</option>
+    <option data-value="">Canada</option>
+    <option data-value="">India</option>
+    <option data-value="">United States</option>
+  </datalist>
+  </input>
+  <!-- to implement custom styling you need to implement js, see mozilladev docs -->
+
+<!-- DROP DOWN LISTS, -->
+  <select multiple>
+    <option value=""></option>
+    <option value="1" selected>HTML</option>
+    <option value="2">CSS</option>
+    <option value="3">JAVASCRIPT</option>
+  </select>
+  <!-- multiple boolean attribute allows you to select multiple options, selected attribute tells browser to select this option when page is rendered, value attribute's value gets sent to server when form submitted -->
+  <optgroup></optgroup>
+  <!-- element used to group options together so you can have multiple groups per drop down -->
+
+<!-- CHECKBOXES -->
+  <input type="checkbox" name="" id="front-end" checked>
+  <label for="front-end" class="label-inline">Front-end</label>
+  <!-- checked attribute checks box when rendered -->
+
+<!-- RADIO BUTTONS -->
+  <input type="radio" name="membership" id="silver">
+  <label for="silver" class="label-inline">Silver</label>
+  <!-- name attribute is used for grouping of radio buttons -->
+
+<!-- SLIDERS -->
+  <input type="range" min="0" max="100" name="" id="" value="90">
+  <!-- value sets initial value, use js to implement functionality with current value -->
+
+<!-- FILE INPUTS -->
+  <input type="file">
+  <!-- important attributes: accept, multiple -->
+
+<!-- GROUPING RELATED FIELDS -->
+  <!-- use fieldset or section + legend or h2 to group input fields -->
+  <fieldset><legend>Billing Address</legend><input type="text"><input type="text"><input type="text"><input type="text"><legend>Payment</legend><input type="text"><input type="text"><input type="text"><input type="text"></fieldset>
+
+<!-- DATA VALIDATION  -->
+  <!-- before submitting form, we should always validate the data being submitted -->
+  <!-- required fields, valid emails, numbers and dates within valid range -->
+  <!-- most done within js, but html5 input elements offers a little bit of validation -->
+  <!-- important attributes: type, required, minlength, maxlength, min, max -->
+
+<!-- SUBMITTTING THE FORM -->
+  <form action=""><input type="text"><input type="text"><input type="text">
+    <input type="submit" value="Submit" />
+    <button type="submit">Submit</button>
+    <!-- have same output, but you should use button element -->
+  </form>
+  <!-- action attribute value is endpoint we send the data, absolute or relative url -->
+  <!-- method attribute: value is GET or POST HTTP method we use to send data -->
+  <!-- With the POST method, form data is included in the body of the request. With the GET method, form data is included in the URL as query string parameters. That’s why the GET method is often used when we need to enable bookmarking pages. In contrast, the POST method is used when we need to update the data. -->
+
+<!-- **********************************************************************************
+        ANIMATIONS
+*************************************************************************************-->
+
+<!-- 2D TRANSFORMATIONS -->
+<!-- rotate(), scale(), skew(), translate() -->
+<!-- 3D TRANSFORMATIONS -->
+<!-- transform: perspective() translateZ()/rotateY()
+  transform-origin: xoffset yoffset
+-->
+<!-- you can define perspective on container or child elements -->
+<!-- the transform property is used to apply one or more transformations to an element -->
+
+<!-- TRANSITIONS -->
+<!-- use transition property to animate one or more properties instead of going from point A to B instantly, we use it for simple animations  -->
+<!-- transition: propertyWeAreUpdating duration ease-in/linear/ease-out/cubic-bezie() -->
+
+<!-- ANIMATIONS -->
+<!-- we use animate property for more complicated animations, for ex if we want different animations for more than one property -->
+@keyframes customNameForAnimation {
+  0% {
+    styles for this frame
+  }
+  25% { styles for this frame}
+  ...
+  100% {...}
+}
+.container {
+  animation-name: customNameForAnimation;
+  animation-duration: 4s;
+  animation-delay: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ...;
+  animation-direction:...;
+}
+<!-- to create reusable animation put them in class, and then apply class to html elements -->
+<!-- animate.style: provides CDN for animations -->
+
+<!-- **********************************************************************************
+        WRITING CLEAN, MAINTAINABLE, CSS
+*************************************************************************************-->
+
+<!-- BEST PRACTICES -->
+<!-- follow naming convention -->
+<!-- create logical sections in your stylesheet: for smaller size project you may have single stylesheet but for larger projects have multiple that get combined with SASS or LESS, label sections with comments -->
+<!-- avoid over-specific selectors: avoid direct child selectors to avoid breaking changes, remove element types in hierarchies and instead resort to classes, use specific names for classes to avoid having to keep overwriting styles in different areas,  Limit nesting to two or maximum three selectors.  -->
+<!-- avoid !important keyword -->
+<!-- sort css properties in ascending or descending order so lines are easy to read -->
+<!-- take advantage of style inheritance -->
+<!-- extract repetitive patterns with object-oriented CSS -->
+<!-- implement DRY principle, (don't repeat yourself: use css variables -->
+
+<!-- CSS VARIABLES, or custom properties -->
+<style>
+  :root {
+    /* where we can define custom properties or global variables */
+    --color-primary: yellow;
+    --border-size:2px;
+    --border-radius: 10px;
+  }
+  
+  .box { background: var(--color-primary);}
+  </style>
+
+<!-- OBJECT-ORIENTED CSS -->
+  <!-- 2 principles: -->
+  
+  <!-- 1. seperate container from content: style components without container, and then you can reuse those components in different containers without having to redefine styles -->
+  <!-- 2. seperate structure from skin: define style with common structure for components, and then for specific "skin" or look define seperate class with that specific skin, ex .btn and .btn-gold -->
+  
+  <!-- BEM, Block Element Modifier: popular naming convention -->
+  <!-- think of our webpage as reusable components that contain elements and can be modified -->
+  <!-- it follows the following naming convention for classes: -->
+  <!-- blockName__elementName -->
+  <!-- blockName blockName--modifier -->
+  
+<!-- **********************************************************************************
+        PART 3 OF 3 OF CSS AND HTML COURSE
+*************************************************************************************-->
+<!-- coded along with mosh to build website, actual files will be in this repository and any other notes will be included below -->
