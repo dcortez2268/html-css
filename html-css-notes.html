@@ -794,15 +794,46 @@ aside is used for content that is not directly related to main content  -->
 *************************************************************************************-->
 <!-- coded along with mosh to build website, actual files will be in this repository and any other notes will be included below -->
 
-<!-- media object, or media components: popular design for component where you have icon on left/right and then heading and text on other side -->
-<!-- call out components: call on user to take action -->
-<!-- color palette: composed of primary, secondary, and accent color, and other main colors -->
+<!-- 
+  VOCAB: 
+    media object, or media components: popular design for component where you have icon on left/right and then heading and text on other side,
 
-<!--  iterative workflow: bottom up approach, components first (better than top down approach where we do page first and leads to a lot of issues and hard to troubleshoot)
+    call out components: call on user to take action,
+    color palette: composed of primary, secondary, and accent color, and other main colors, 
+-->
+
+<!--  
+  iterative workflow: bottom up approach, components first (better than top down approach where we do page first and leads to a lot of issues and hard to troubleshoot)
     1. identify individual components to create and style based on design given to us
     2. use photoshop to determine typography
     3. create component inside index.html with styling, then export html to html file inside components folder
     4. commit changes
-     -->
+-->
+
+<!-- 
+  for good organization, implement BEM naming convention.  Use this for semantic html markup and list classes in inline styling from most general to most specific  
+-->
+
+<!-- 
+  OPTOMIZING IMAGES: implements smaller image file size and if not done there will be a lot of resizing by browser which can be costly
+    1. Figure out max width based on no larger than 500px on mobile and then figure out what other containers it will be in and proportion to container
+    2. Implement the max width size in px for image using photoshop
+    3. Provide 2, 3x files for High density screens using photoshop and cloudconvert.com for webp format
+    4. use this ex for markup and to make image responspive on tablets and mobile (the img element gets used bc i dont think source element is compatibe) then you need to set img css width property to 100%;
+-->
+<picture>
+  <source
+    srcset="images/resized/easy.webp 1x, images/resized/easy@2x.webp 2x"
+    type="image/webp" />
+  <source
+    srcset="images/resized/easy.png 1x, images/resized/easy@2x.png 2x"
+    type="image/png" />
+  <img class="feature__image" src="images/resized/easy@2x.png" alt=""
+/></picture>
+
+
+
+
+
 
 
